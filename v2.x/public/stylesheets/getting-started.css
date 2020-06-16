@@ -1,0 +1,36 @@
+body {
+    background-color: black;
+}
+
+#main-div {
+    max-width: 25rem;
+    margin: 100px auto;
+}
+
+#signIn {
+    font-family: 'Pacifico', cursive;
+    font-size: 4.5rem;
+    margin-bottom: 50px;
+    color: black;
+}
+
+#links {
+    margin: 10px 0px;
+}
+
+#logIn {
+    padding-left: 0px;
+}
+
+button {
+    margin-top: 10px;
+    width: 100%;
+}
+
+#proceedSymbol {
+    margin-left: 10px;
+}
+
+#username {
+    padding-bottom: 15px;
+}
