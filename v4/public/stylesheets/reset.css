@@ -1,0 +1,26 @@
+body {
+    background-color: black;
+}
+
+#main-div {
+    max-width: 25rem;
+    margin: 100px auto;
+}
+
+#signIn {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: black;
+}
+
+hr {
+    margin: 25px auto;
+}
+
+input {
+    width: 100%;
+}
+
+#reset {
+    margin-bottom: 35px;
+}

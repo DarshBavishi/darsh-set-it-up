@@ -1,0 +1,180 @@
+<%- include("./partials/header") %>
+<link rel="stylesheet" href="/stylesheets/settings.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-5 col-lg-4 col-xl-3">
+                <div id="myCard" class="card text-center">
+                    <img id="myImg" src="<%= user.image %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 id="card-title" class="card-title"><%= user.name %></h5>
+                        <p id="card-text" class="card-text">Member since May 2020</p>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                            data-target="#exampleModal" id="editPictureButton">
+                            EDIT PROFILE PICTURE
+                        </button>
+                        <form action="/settings/<%= user._id%>/image?_method=PUT" method="POST"
+                            enctype="multipart/form-data">
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit Profile Picture</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="file" id="image" name="image" accept="image/*" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-outline-primary" id="updatePictureButton">Update
+                                                Profile Picture</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <a id="activeProfile" class="list-group-item">Profile</a>
+                        <a id="activeSettings" class="list-group-item active">Settings</a>
+                        <a id="Logout" class="list-group-item" href="/logout">Logout</a>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-8 col-xl-9 ">
+                <div class="row d-flex justify-content-center justify-content-lg-start" id="firstRow">
+                    <form action="/settings/<%= user._id %>" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Username</label>
+                                <input id="username" type="text" class="form-control" value="<%= user.username %>"
+                                    name="username" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail2">Email</label>
+                                <input id="email" type="email" class="form-control myClass" id="inputEmail2"
+                                    value="<%= user.email %>" name="email" readonly>
+                                <small>An Email will be sent on this Email Address incase you forget your
+                                    password.</small>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="inputContactNo">Contact No</label>
+                            <input id="contactNo" type="text" class="form-control myClass" id="inputContactNo"
+                                value="<%= user.phNumber %>" name="phNumber" readonly>
+                            <small>An OTP will be sent on your Contact No for
+                                verfication.</small>
+                        </div> -->
+                        <a id="editButton" class="btn btn-outline-primary" id="editChangesButton">EDIT
+                            CHANGES</a>
+                        <span id="submitButton">
+                            <button type="submit" class="btn btn-outline-primary" id="saveChangesButton">SAVE
+                                CHANGES</button>
+                        </span>
+                    </form>
+                </div>
+                <hr>
+                <div class="row d-flex justify-content-center justify-content-lg-start" id="secondRow">
+                    <form action="/settings/<%= user._id%>/reset" method="POST">
+                        <h5 id="changePasswordText">Change Password</h5>
+                        <div class="form-label-group">
+                            <input type="password" id="inputPassword1" name="password" class="form-control"
+                                placeholder="New Password" required size="50">
+                            <label for="inputPassword1">New Password</label>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="password" id="inputPassword" name="confirm" class="form-control"
+                                placeholder="Retye Password" required size="50">
+                            <label for="inputPassword">Retype Password</label>
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary" id="resetPasswordButton">RESET
+                            PASSWORD</button>
+                    </form>
+                </div>
+                <hr>
+                <div id="lastRow" class="row">
+                    <strong id="strong">Delete Account</strong>
+                    <span id="span">
+                        <!-- Modal Button -->
+                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal"
+                            id="deleteButton">
+                            DELETE ACCOUNT
+                        </button>
+                    </span>
+                    <form action="/settings/<%= user._id%>/delete?_method=DELETE" method="POST">
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModallLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="myModalLabel">Warning</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        This action can't be undone. Are you sure you want to do this?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-outline-danger" id="finalDeleteButton">DELETE</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div id="lastRow" class="row ">
+                    <strong id="strong">Delete Account</strong>
+                    <span id="span"> -->
+                        <!-- Modal Button -->
+                        <!-- <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                            data-target="#myModal1" id="deleteButton">
+                            Update Profile Pictures
+                        </button> -->
+                    <!-- </span> -->
+                    <!-- <form id="imagesEditForm" action="/settings/<%= user._id%>/update?_method=PUT" method="POST"
+                        enctype="multipart/form-data"> -->
+                        <!-- Modal -->
+                        <!-- <div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
+                            aria-labelledby="myModal1lLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="myModal1Label">Edit Profile Pictures</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="file" id="imageUpload" accept="images/*" name="images" multiple />
+                                        <div>
+                                            <% user.images.forEach(function(image,i) { %>
+                                            <img src="<%= image.url %>" alt="..." width="200px;">
+                                            <label for="image<%= i %>">Delete?</label>
+                                            <input type="checkbox" name="deleteImages[]" class="imageDeleteCheckbox"
+                                                id="<%= i %>" value="<%= image.public_id %>">
+                                            <% }) %>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-outline-primary" id="finalDeleteButton">Update Profile
+                                            Pictures</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    <!-- </form> -->
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/settings.js"></script>
+    <%- include("./partials/footer") %>

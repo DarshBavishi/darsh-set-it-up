@@ -1,0 +1,16 @@
+#font {
+    font-family: 'Pacifico', cursive;
+}
+
+.biggy {
+    font-size: 1.5em;
+}
+
+#drp {
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+.dropdown-menu {
+    background-color: black;
+    color: white;
+}
