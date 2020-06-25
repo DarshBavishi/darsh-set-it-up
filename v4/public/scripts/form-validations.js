@@ -1,19 +1,3 @@
-$(".reveal-pwd").on('click',function() {
-  var $pwd = $(".pwd");
-  if ($pwd.attr('type') === 'password') {
-      $pwd.attr('type', 'text');
-  } else {
-      $pwd.attr('type', 'password');
-  }
-});
-$(".reveal-repwd").on('click',function() {
-  var $pwd = $(".repwd");
-  if ($pwd.attr('type') === 'password') {
-      $pwd.attr('type', 'text');
-  } else {
-      $pwd.attr('type', 'password');
-  }
-});
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
     'use strict';
@@ -32,3 +16,19 @@ $(".reveal-repwd").on('click',function() {
       });
     }, false);
   })();
+$(".reveal-pwd").on('click',function() {
+  var $pwd = $(".pwd");
+  if ($pwd.attr('type') === 'password') {
+      $pwd.attr('type', 'text');
+  } else {
+      $pwd.attr('type', 'password');
+  }
+});
+$(".reveal-repwd").on('click',function() {
+  var $pwd = $(".repwd");
+  if ($pwd.attr('type') === 'password') {
+      $pwd.attr('type', 'text');
+  } else {
+      $pwd.attr('type', 'password');
+  }
+});

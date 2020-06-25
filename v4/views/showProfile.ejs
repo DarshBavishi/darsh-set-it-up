@@ -10,10 +10,98 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <link rel="stylesheet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
-    <link rel="stylesheet" href="/stylesheets/showProfile.css">
+    <!-- pacifico-->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- balsamiqSans -->
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/stylesheets/showProfile.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+    
 </head>
-<body class="profile-page mb-4">
-    <div class="page-header header-filter" data-parallax="true" style="background-image:url('https://cdn.shopify.com/s/files/1/0027/9642/1155/products/Love6_2000x.png?v=1562795222'); background-repeat: no-repeat;background-size: cover;"></div>
+
+
+<body class="profile-page ">
+    <nav id="font" class="navbar navbar-expand-lg bg-dark " style="background-color: black!important; z-index: 1;">
+        <a class="navbar-brand" href="#">
+            <i class="fa fa-venus-mars biggy" aria-hidden="true"></i>
+            <span class="biggy">Setitup</span>
+        </a>
+    
+        <!-- collapse button -->
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="navbar-toggler-icon"><span></span><span></span><span></span></div>
+        </button>
+        <!-- !collapse button -->
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <% if(currentUser) { %>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link navbar-link" href="#"><i class="fas fa-compass"></i>Discover <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link navbar-link" href="#"><i class="fas fa-heart"></i>Likes <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link navbar-link" href="#"><i class="fas fa-bookmark"></i>Saved <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link navbar-link" href="#"><i class="fas fa-comment-alt"></i>Chat</a>
+                </li>
+            </ul>
+            <!-- right end -->
+            <ul class="navbar-nav ml-auto">
+                <!-- dropdown -->
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-user-circle biggy"></i><span class="drp">User</span>
+                    </a>
+                    <div id="drp" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#"><i class="far fa-user"></i>Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i
+                                class="fas fa-user-cog"></i>Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="fas fa-life-ring"></i>Help</a>
+                    </div>
+                </li>
+                <% } else { %>
+                <a class="nav-link active" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+                <a class="nav-link active" href="/getting-started"><i class="fas fa-user-plus"></i>Signup</a>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+    <!-- <div class="container mt-5">
+        <% if(error && error.length > 0 ) { %>
+        <div class="row d-flex justify-content-between m-2">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= error %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0 ) { %>
+        <div class="row d-flex justify-content-between m-2">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= success %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        
+        <% } %>
+    </div> -->
+    <!-- <div class="page-header header-filter" data-parallax="true" style="background-image:url('https://cdn.shopify.com/s/files/1/0027/9642/1155/products/Love6_2000x.png?v=1562795222'); background-repeat: no-repeat;background-size: cover;"></div> -->
     <div class="main main-raised">
 		<div class="profile-content">
             <div class="container">
@@ -253,23 +341,68 @@
                         </div> 
                     </div>
                 </div>
+                <div class="row d-flex justify-content-center pb-4">
+                    <a href="/profile/<%= user._id %>/edit" class="btn btn-lg btn-rose">Edit Profile</a>
+                </div>
             </div>
             <div class="tab-pane text-center gallery" id="photos">
-      			<div class="row">
-      				<div class="col-md-6 mx-auto">
-                        <% user.images.forEach(function(img){ %>
-                            <img src="<%= img.url %>" class="rounded">
-                        <% }) %>
-      				</div>
-      			</div>
-  			</div>
-          </div>
-          <div class="row d-flex justify-content-center pb-4">
-              <a href="/profile/<%= user._id %>/edit" class="btn btn-lg btn-rose">Edit Profile</a>
+                <div class="row w-75 mx-auto d-flex justify-content-center ">
+                    <% if (user.images.length==0) {%>
+                        <h2 class="title my-5">No Pictures Uploaded.</h2>
+                    <% } %>
+                    <% user.images.forEach(function (img) { %>
+                       <div class="col-12 col-md-6">
+                                <div class="card shadow-lg bg-white rounded mt-5">
+                                    <img class="card-img mb-0" style="width:100%; height: 100%; object-fit: cover;" src="<%= img.url %>">
+                                </div>
+                        </div>
+                    <% }); %>
+                </div>
+                <div class="row d-flex justify-content-center pb-4">
+                    <a href="/profile/<%= user._id %>/edit#photos" class="btn btn-lg btn-rose">Edit Profile Pictures</a>
+                </div>  
+            </div>
           </div>
             </div>
         </div>
-	</div>
+    </div>
+    <footer class = "footer ">
+        <div class="container-fluid footer-content">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <img class="mb-2"
+                        src="https://res.cloudinary.com/dcimcuqjm/image/upload/v1592807748/Screenshot_89_p19yzz.png" alt=""
+                        width="210" height="100" class="footer-content">
+                    <small class="d-block mb-3 text-muted footer-content">&copy; SetItUp 2020</small>
+                </div>
+                <div class=" col-6 col-md">
+                    <h5>CONDITIONS</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a href="#"class = "footer-content">Privacy</a></li>
+                        <li><a href="#" class = "footer-content">Terms</a></li>
+                        <li><a href="#"class = "footer-content">Community Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>FOLLOW</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a href="#" class = "footer-content">Instagram</a></li>
+                        <li><a href="#" class = "footer-content">Snapchat</a></li>
+                        <li><a href="#" class = "footer-content">Facebook</a></li>
+                        <li><a href="#" class = "footer-content">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>CONTACT</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a href="#" class = "footer-content">Support</a></li>
+                        <li><a href="#" class = "footer-content">Safety Tips</a></li>
+                        <li><a href="#" class = "footer-content">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</footer>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>

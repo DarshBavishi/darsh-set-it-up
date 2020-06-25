@@ -1,6 +1,7 @@
 require("dotenv/config");
 var express = require("express");
 var router = express.Router();
+var async = require("async");
 var multer = require('multer');
 var User = require("../models/user");
 const cities = require("all-countries-and-cities-json")
@@ -67,38 +68,40 @@ router.post("/profile/:id", upload.array('images', 5), async function (req, res)
             
             //CALCULATING AGE FROM DOB GIVEN BY USER
             
-            var {
-                AgeFromDateString
-            } = require('age-calculator');
-            var Date = req.body.user.date;
-            let ageFromString = new AgeFromDateString('' + Date + '').age;
-            // console.log(ageFromString);
+            // var {
+            //     AgeFromDateString
+            // } = require('age-calculator');
+            // var Date = req.body.user.date;
+            // let ageFromString = new AgeFromDateString('' + Date + '').age;
+            // // console.log(ageFromString);
 
-            //SAVING DATA ON DATABASE
-            if (ageFromString < 15) {
-                updatedUser.userAgeGroup= "Below 15";
-            }
-            else if (ageFromString >= 15 && ageFromString <= 18) {
-                updatedUser.userAgeGroup = "15-18";
-            }
-            else if (ageFromString >= 19 && ageFromString <= 21) {
-                updatedUser.userAgeGroup = "19-21";
-            }
-            else if (ageFromString >= 22 && ageFromString <= 26) {
-                updatedUser.userAgeGroup = "22-26";
-            } 
-            else if (ageFromString >= 27 && ageFromString <= 30) {
-                updatedUser.userAgeGroup = "27-30";
-            }
-            else if (ageFromString >= 31 && ageFromString <= 50) {
-                updatedUser.userAgeGroup = "31-50";
-            }
-            else {
-                updatedUser.userAgeGroup = "Above 50";
-            }   
+            // //SAVING DATA ON DATABASE
+            // if (ageFromString < 15) {
+            //     // updatedUser.userAgeGroup= "Below 15";
+            //     req.flash("error", "Users below the age of 15 are not permitted!");
+            //     return res.redirect("back" );
+            // }
+            // else if (ageFromString >= 15 && ageFromString <= 18) {
+            //     updatedUser.userAgeGroup = "15-18";
+            // }
+            // else if (ageFromString >= 19 && ageFromString <= 21) {
+            //     updatedUser.userAgeGroup = "19-21";
+            // }
+            // else if (ageFromString >= 22 && ageFromString <= 26) {
+            //     updatedUser.userAgeGroup = "22-26";
+            // } 
+            // else if (ageFromString >= 27 && ageFromString <= 30) {
+            //     updatedUser.userAgeGroup = "27-30";
+            // }
+            // else if (ageFromString >= 31 && ageFromString <= 50) {
+            //     updatedUser.userAgeGroup = "31-50";
+            // }
+            // else {
+            //     updatedUser.userAgeGroup = "Above 50";
+            // }   
             if(req.body.user.relFinalAge <= req.body.user.relInitialAge ) {
                 req.flash("error", "Please Enter a Final Age that is greater than the Initial Age in the Preferred Age Group category!");
-                return res.redirect("/profile/" + updatedUser._id);
+                return res.redirect("back");
             }
             updatedUser.images = req.body.user.images;
             updatedUser.firstName = req.body.user.firstName;
@@ -107,7 +110,7 @@ router.post("/profile/:id", upload.array('images', 5), async function (req, res)
             updatedUser.city = req.body.user.city;
             updatedUser.gender = req.body.user.gender;
             updatedUser.date = req.body.user.date;
-            updatedUser.age = ageFromString;
+            // updatedUser.age = ageFromString;
             updatedUser.nickname = req.body.user.nickname;
             updatedUser.bio = req.body.user.bio;
             updatedUser.maritalStatus = req.body.user.maritalStatus;
@@ -185,8 +188,10 @@ router.post("/profile/:id/view", async function (req,res) {
             // console.log(ageFromString);
 
             // SAVING DATA ON DATABASE
-            if (ageFromString < 15) {
-                updatedUser.userAgeGroup= "Below 15";
+            if (ageFromString < 15 ) {
+                // updatedUser.userAgeGroup= "Below 15";
+                req.flash("error", "Users below the age of 15 are not permitted!");
+                return res.redirect("/profile/" + updatedUser._id + "/edit" );
             }
             else if (ageFromString >= 15 && ageFromString <= 18) {
                 updatedUser.userAgeGroup = "15-18";
@@ -240,6 +245,46 @@ router.post("/profile/:id/view", async function (req,res) {
             await updatedUser.save();
             res.redirect("/profile/"+ req.params.id + "/view");
         }
+    })
+});
+
+//EDITING MULTIPLE IMAGES ROUTE
+
+router.put("/profile/:id/update", upload.array("images", 5), (req, res) => {
+    //find user by id
+    User.findById(req.params.id, async (err, user) => {
+        //check if there is any image for deletion
+        if (req.body.deleteImages && req.body.deleteImages.length) {
+            //assign deleteImages from req.body to its own variable
+            var deleteImages = req.body.deleteImages;
+            //loop over for deletion of selected images
+            for (var public_id of deleteImages) {
+                // delete images from cloudinary
+                await cloudinary.v2.uploader.destroy(public_id);
+                //delete images from user.images
+                for (var image of user.images) {
+                    if (image.public_id === public_id) {
+                        var index = user.images.indexOf(image);
+                        user.images.splice(index, 1);
+                    }
+                }
+            }
+        }
+        //check if there are any new images to upload
+        if (req.files) {
+            //upload images
+            for (const file of req.files) {
+                var image = await cloudinary.v2.uploader.upload(file.path);
+                //add images to user.images array
+                user.images.push({
+                    url: image.secure_url,
+                    public_id: image.public_id
+                })
+            }
+        }
+        //save the new images in database
+        await user.save();
+        res.redirect("/profile/" + req.params.id + "/view#photos");
     })
 });
 module.exports = router;

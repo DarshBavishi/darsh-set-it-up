@@ -65,14 +65,35 @@ router.post("/register", upload.single('image'), function (req, res) {
                         return res.redirect("back");
                     }
                 })
-
-            var newUser = new User({
-                username: req.body.username,
-                email: req.body.email,
-                image: result.secure_url,
-                imageId: result.public_id,
-                phNumber: req.body.phNumber
-            });
+                //AGE 
+                console.log(req.body);
+                if (req.body.age >= 15 && req.body.age <= 18) {
+                    userAgeGroup= "15-18";
+                }
+                else if (req.body.age >= 19 && req.body.age <= 21) {
+                    userAgeGroup = "19-21";
+                }
+                else if (req.body.age >= 22 && req.body.age <= 26) {
+                    userAgeGroup = "22-26";
+                } 
+                else if (req.body.age >= 27 && req.body.age <= 30) {
+                    userAgeGroup = "27-30";
+                }
+                else if (req.body.age >= 31 && req.body.age <= 50) {
+                    userAgeGroup = "31-50";
+                }
+                else {
+                    userAgeGroup = "Above 50";
+                } 
+                var newUser = new User({
+                    username: req.body.username,
+                    email: req.body.email,
+                    image: result.secure_url,
+                    imageId: result.public_id,
+                    phNumber: req.body.phNumber,
+                    age: req.body.age,
+                    userAgeGroup: userAgeGroup
+                });
             User.register(newUser, req.body.password, function (err, user) {
                 if (err) {
                     console.log(err);

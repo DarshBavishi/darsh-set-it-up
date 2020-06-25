@@ -12,6 +12,19 @@ router.get("/getting-started", function (req, res) {
 //HANDLING GETTING STARTED ROUTE REQUEST
 
 router.post("/getting-started", function (req, res) {
+    //CALCULATING AGE FROM DOB GIVEN BY USER      
+    var {
+        AgeFromDateString
+    } = require('age-calculator');
+    var Date = req.body.date;
+    let ageFromString = new AgeFromDateString('' + Date + '').age;
+    // console.log(ageFromString);
+
+    if (ageFromString < 15) {
+        req.flash("error", "Users below the age of 15 are not permitted!");
+        return res.redirect("back" );
+    } else {
+    var age = ageFromString;
     var phNumber = req.body.phNumber;
     //sending a text message
     client
@@ -23,8 +36,10 @@ router.post("/getting-started", function (req, res) {
             channel: "sms"
         })
         .then(res.render("register", {
-            phNumber: phNumber
+            phNumber: phNumber,
+            age: age
         }))
+    }
 });
 
 module.exports = router;

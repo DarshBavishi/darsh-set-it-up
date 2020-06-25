@@ -20,7 +20,7 @@ var resetRoutes = require("./routes/reset");
 var settingsRoutes = require("./routes/settings");
 var homeRoutes = require("./routes/home");
 
-mongoose.connect("mongodb://localhost:27017/test-a", {
+mongoose.connect("mongodb://localhost:27017/test-b", {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });

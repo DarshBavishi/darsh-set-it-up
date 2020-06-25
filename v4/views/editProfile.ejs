@@ -16,8 +16,8 @@
 
             <h3 class="card-title text-center mb-4 py-3 font-weight-bold">Edit your Profile.</h3>
 
-            <form action="/profile/<%= user._id %>/view" method="POST">
-                <div class="card-body col-md-10 mx-auto text-dark">
+            <div class="card-body col-md-10 mx-auto text-dark">
+                <form action="/profile/<%= user._id %>/view" method="POST">
                     <div class="form-row">
                         <div class=" col-12 col-sm-6">
                             <label class="col-form-label-lg" >First Name</label>
@@ -441,54 +441,54 @@
                                        <label class=" d-flex col-form-label py-0 ">Do you Cook?</label>
                                     <% if(user.cook ==="Yes") { %>
                                        <div class="form-check form-check-inline">
-                                           <input class="form-check-input" type="radio" name="user[cook]" value="Yes" checked >
+                                           <input class="form-check-input" type="radio" name="user[cook]" value="Yes" checked required >
                                            <label class="form-check-label" >Yes</label>
                                        </div>
                                        <div class="form-check form-check-inline">
-                                           <input class="form-check-input" type="radio" name="user[cook]" value="No" >
+                                           <input class="form-check-input" type="radio" name="user[cook]" value="No" required>
                                            <label class="form-check-label">No</label>
                                        </div>
                                        <div class="form-check form-check-inline">
-                                           <input class="form-check-input" type="radio" name="user[cook]" value="Ocassionaly">
+                                           <input class="form-check-input" type="radio" name="user[cook]" value="Ocassionaly" required>
                                            <label class="form-check-label">Ocassionaly</label>
                                        </div>
                                     <% } else if (user.cook ==="No") { %>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="user[cook]" value="Yes" >
+                                            <input class="form-check-input" type="radio" name="user[cook]" value="Yes" required>
                                             <label class="form-check-label" >Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="user[cook]" value="No" checked>
+                                            <input class="form-check-input" type="radio" name="user[cook]" value="No" checked required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="user[cook]" value="Ocassionaly">
+                                            <input class="form-check-input" type="radio" name="user[cook]" value="Ocassionaly" required>
                                             <label class="form-check-label">Ocassionaly</label>
                                         </div>
                                     <% } else if (user.cook ==="Ocassionaly") { %>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="user[cook]" value="Yes" >
+                                            <input class="form-check-input" type="radio" name="user[cook]" value="Yes" required>
                                             <label class="form-check-label" >Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="user[cook]" value="No" >
+                                            <input class="form-check-input" type="radio" name="user[cook]" value="No" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="user[cook]" value="Ocassionaly" checked >
+                                            <input class="form-check-input" type="radio" name="user[cook]" value="Ocassionaly" checked required>
                                             <label class="form-check-label">Ocassionaly</label>
                                         </div>
                                     <% } else { %>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="user[cook]" value="Yes" >
+                                            <input class="form-check-input" type="radio" name="user[cook]" value="Yes" required>
                                             <label class="form-check-label" >Yes</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="user[cook]" value="No" >
+                                            <input class="form-check-input" type="radio" name="user[cook]" value="No" required>
                                             <label class="form-check-label">No</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="user[cook]" value="Ocassionaly" checked >
+                                            <input class="form-check-input" type="radio" name="user[cook]" value="Ocassionaly" checked required >
                                             <label class="form-check-label">Ocassionaly</label>
                                         </div>
                                     <% } %>
@@ -497,29 +497,29 @@
                                        <label class=" d-flex col-form-label py-0">Source of income?</label>
                                        <% if(user.income ==="Yes") { %>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="user[income]" value="Yes" checked>
+                                                <input class="form-check-input" type="radio" name="user[income]" value="Yes" checked required>
                                                 <label class="form-check-label" >Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="user[income]" value="No">
+                                                <input class="form-check-input" type="radio" name="user[income]" value="No" required>
                                                 <label class="form-check-label" >No</label>
                                             </div>
                                         <% } else if (user.income ==="No") { %> 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="user[income]" value="Yes">
+                                                <input class="form-check-input" type="radio" name="user[income]" value="Yes" required>
                                                 <label class="form-check-label" >Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="user[income]" value="No" checked >
+                                                <input class="form-check-input" type="radio" name="user[income]" value="No" checked required>
                                                 <label class="form-check-label" >No</label>
                                             </div>
                                         <% } else { %>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="user[income]" value="Yes">
+                                                <input class="form-check-input" type="radio" name="user[income]" value="Yes" required>
                                                 <label class="form-check-label" >Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="user[income]" value="No">
+                                                <input class="form-check-input" type="radio" name="user[income]" value="No" required>
                                                 <label class="form-check-label" >No</label>
                                             </div>
                                         <% } %>
@@ -578,15 +578,6 @@
                            </div>
                        </div>
                     </div>
-
-                    <div style="margin: 15px 0px;" class="hr-theme-slash-2">
-                       <div class="hr-line"></div>
-                       <div class="hr-icon"><i class="fas fa-venus-mars"></i></div>
-                       <div class="hr-line"></div>
-                    </div>
-
-                    <h3 class="card-title text-center mb-4 py-3 font-weight-bold">Add your recent photos.</h3>
-
                     <div style="margin: 15px 0px;" class="hr-theme-slash-2">
                        <div class="hr-line"></div>
                        <div class="hr-icon"><i class="fas fa-venus-mars"></i></div>
@@ -617,9 +608,72 @@
                     </div>
                     <div class="col-sm-9 col-md-7 col-lg-6 mx-auto ml-5 my-4 pt-4 d-flex justify-content-between ">
                         <button type="submit" class = "btn btn-info "> Update your  <span class="brand-logo">SetItUp</span> Profile! &nbsp; <i class="fas fa-sign-in-alt"></i> </button>
-                    </div>
-                </div>
-            </form>
+                    </div> 
+                </form>
+                <div style="margin: 15px 0px;" class="hr-theme-slash-2">
+                    <div class="hr-line"></div>
+                    <div class="hr-icon"><i class="fas fa-venus-mars"></i></div>
+                    <div class="hr-line"></div>
+                 </div>
+
+                 <h3 id="photos" class="card-title text-center mb-4 py-3 font-weight-bold">Edit your profile photos.</h3>
+
+                 <div class="row d-flex justify-content-center mb-5">
+                 <% user.images.forEach(function (img) { %>
+                    <div class="col-6">
+                             <div class="card h-100 shadow-lg bg-white rounded mb-5">
+                                 <img class="img-fluid rounded-lg" style="width:100%; height:100%; object-fit: cover;" src="<%= img.url %>">
+                             </div>
+                     </div>
+                 <% }); %>
+                 </div>
+
+                 <div id="lastRow" class="row d-flex justify-content-center">
+                 <span id="span">
+                     <!-- Modal Button -->
+                     <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                         data-target="#myModal1" id="deleteButton">
+                         Update Profile Pictures
+                     </button>
+                 </span>
+                    <form id="imagesEditForm" action="/profile/<%= user._id%>/update?_method=PUT" method="POST" enctype="multipart/form-data">
+                     <!-- Modal -->
+                     <div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
+                         aria-labelledby="myModal1lLabel" aria-hidden="true">
+                         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                             <div class="modal-content">
+                                 <div class="modal-header ">
+                                     <h5 class="modal-title " id="myModal1Label">Edit Profile Pictures</h5>
+                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                     </button>
+                                 </div>
+                                 <div class="modal-body">
+                                     <input class="mt-3 mb-5" type="file" id="imageUpload" accept="images/*" name="images" multiple />
+                                     <div class="row d-flex justify-content-center">
+                                         <% user.images.forEach(function(image,i) { %>
+                                         <div class="col-6">
+                                             <img src="<%= image.url %>" alt="..." width="200px;">
+                                             <div class="my-3">
+                                                 <span class="d-flex justify-content-center">
+                                                     <label class="m-0 h5" for="image<%= i %>">Delete?</label>
+                                                     <input class="mt-1 m-2" type="checkbox" name="deleteImages[]" class="imageDeleteCheckbox" id="<%= i %>" value="<%= image.public_id %>">
+                                                 </span>
+                                             </div>
+                                         </div>
+                                         <% }) %>
+                                     </div>
+                                 </div>
+                                 <div class="modal-footer">
+                                     <button class="btn btn-outline-primary" id="finalDeleteButton">Update Profile
+                                         Pictures</button>
+                                 </div>
+                             </div>
+                         </div>
+                        </div>
+                    </form>
+             </div>
+            </div>
         </div>
     </div>
 </div>

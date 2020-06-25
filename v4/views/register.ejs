@@ -1,4 +1,5 @@
 <%- include("./partials/header") %>
+<link rel="stylesheet" href="/stylesheets/register.css">
 
 <div class=" container-fluid">
         <div class="register-pg card mx-auto my-5 border-dark col-12 col-sm-9 col-md-7 col-lg-6">
@@ -79,15 +80,21 @@
                         </div>
                         <!-- --------------------------------------------------------- -->
                         <!-- Added by Parth -->
-                        <div class="form-group row">
+                        <div class="form-group row d-flex justify-content-between">
                             <span class="col-1 i-register "> <i class="fas fa-mobile-alt"></i> </span>
-                            <div class="col-9 mx-auto">
+                            <div class="col-4 mx-auto">
                                 <div class="input-group">
                                     <input readonly type="text" class="form-control-plaintext" value="<%= phNumber %>" name="phNumber">
                                 </div>
                             </div>
-                        </div>
                         <!-- ---------------------------------------------------------------- -->
+                            <label class="col-2 col-form-label text-right">Age: </label>
+                            <div class="col-4 mx-auto">
+                                <div class="input-group">
+                                    <input readonly type="text" class="form-control-plaintext" value="<%= age %>" name="age">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <div class="mx-4">
                                 <div class="form-check pt-4">
