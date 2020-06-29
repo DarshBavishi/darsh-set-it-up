@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SetItUp</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+    <link rel="stylesheet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
+    <!-- pacifico-->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- balsamiqSans -->
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/stylesheets/showProfile.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+    
+</head>
+
+
+<body class="profile-page ">
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark" color-on-scroll="100" id="sectionsNav">
+          <div class="navbar-translate">
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-venus-mars biggy" aria-hidden="true"></i>
+                <span class="biggy">Setitup</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse">
+            <% if(currentUser) { %>
+                <ul class="navbar-nav">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#"><i class="fas fa-compass"></i>Discover <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#"><i class="fas fa-heart"></i>Likes <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#"><i class="fas fa-bookmark"></i>Saved <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#"><i class="fas fa-comment-alt"></i>Chat</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="far fa-user-circle biggy"></i><span class="drp">User</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-with-icons">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-user-circle Button1"></i>Profile
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-sliders-h Button1"></i>Settings
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-question-circle Button1"></i>Help
+                        </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-user-minus"></i>Logout</a>
+                    </li>
+            <% } else { %>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="/getting-started"><i class="fas fa-user-plus"></i>Signup</a>
+                    </li>
+            <% } %>
+                </ul>
+          </div>
+      </nav>
+    <!-- <div class="container mt-5">
+        <% if(error && error.length > 0 ) { %>
+        <div class="row d-flex justify-content-between m-2">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= error %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0 ) { %>
+        <div class="row d-flex justify-content-between m-2">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%;">
+                <%= success %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        
+        <% } %>
+    </div> -->
+    <!-- <div class="page-header header-filter" data-parallax="true" style="background-image:url('https://cdn.shopify.com/s/files/1/0027/9642/1155/products/Love6_2000x.png?v=1562795222'); background-repeat: no-repeat;background-size: cover;"></div> -->
+    <div class="main main-raised">
+		<div class="profile-content">
+            <div class="container">
+                <div class="row">
+	                <div class="col-md-6 ml-auto mr-auto">
+        	           <div class="profile">
+	                        <div class="avatar">
+	                            <img src="<%= user.image %>" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+	                        </div>
+	                        <div class="name pt-5">
+	                            <h3 class="title"><%=user.name %></h3>
+                                <h6 style="text-transform: none;">@<%=user.username %></h6>
+                                <% if (user.fbLink.length>0) { %>
+                                    <a href="<%= user.fbLink %>" class="btn btn-just-icon btn-link btn-dribbble"><i class="fab fa-facebook"></i></a>
+                                <% } %>	
+                                <% if (user.twitterLink.length>0) { %>
+                                    <a href="<%= user.twitterLink %>" class="btn btn-just-icon btn-link btn-twitter"><i class="fab fa-twitter"></i></a>
+                                <% } %>	
+                                <% if (user.igLink.length>0) { %>
+                                    <a href="<%= user.igLink %>" class="btn btn-just-icon btn-link btn-dribbble"><i class="fab fa-instagram"></i></a>
+                                <% } %>		
+	                        </div>
+	                    </div>
+    	            </div>
+                </div>
+                <div class="description text-center">
+                    <p><%= user.bio %></p>
+                </div>
+				<div class="row">
+					<div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile-tabs">
+                          <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#info" role="tab" data-toggle="tab">
+                                  <i class="material-icons">info</i>
+                                  Info
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#photos" role="tab" data-toggle="tab">
+                                  <i class="material-icons">photo</i>
+                                    Photos
+                                </a>
+                            </li>
+                          </ul>
+                        </div>
+    	    	</div>
+            </div>
+        
+          <div class="tab-content tab-space pb-3">
+            <div class="tab-pane active text-center gallery pb-3" id="info">
+                <div class="row">
+                    <div class="col-12 col-lg-5 ml-auto">
+                        <div class="my-4 pb-3">
+                            <div class="card shadow bg-dark rounded pb-3">
+                                    <div class="card-body col-12 px-4 py-0 px-md-0 mx-auto text-light">
+                                        <div class="card-header"><h3 class="title">Basic Info</h3></div>
+                                        <div class="card-body">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class="col-5">
+                                                    <h5 class="card-title">Age</h5>
+                                                    <p class="card-text"><i class="fas fa-birthday-cake"></i>   <%= user.age %></p>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h5 class="card-title">City</h5>
+                                                    <p class="card-text"><i class="fas fa-map-marker"></i>  <%= user.city %></p>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-5">
+                                                <div class="col-9 mx-auto">
+                                                    <h5 class="card-title">Marital Status</h5>
+                                                    <p class="card-text"><%= user.maritalStatus %></p>
+                                                </div>
+                                            </div>
+                                            <div class="row d-flex justify-content-around mt-5">
+                                                <div class="col-5">
+                                                    <h5 class="card-title"> <%= user.gender %></h5>
+                                                    <!-- <p class="card-text"> </p> -->
+                                                </div>
+                                                <div class="col-7">
+                                                    <h5 class="card-title"><%= user.relPreference %></h5>
+                                                    <!-- <p class="card-text"> </p> -->
+                                                </div>
+                                            </div>
+                                                
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>    
+                        <div class="card shadow bg-success rounded my-5 ">
+                            <div class="card-body col-12 px-4 py-0 px-md-0 mx-auto text-light ">
+                                <div class="card-header"><h3 class="title">Some Additional Info</h3></div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-9 mx-auto">
+                                                <h5 class="card-title mb-1">Currently </h5>
+                                                <p class="card-text"><%= user.currently%></p>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex justify-content-between mt-4">
+                                            <% if (user.languages.length>0) { %>
+                                                <div class="col-6">
+                                                    <h5 class="card-title mb-1">Languages</h5>
+                                                    <p class="card-text"><%= user.languages%></p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <h5 class="card-title mb-1">Virgin ?</h5>
+                                                    <p class="card-text"><%= user.virgin %></p>
+                                                </div>
+                                            <% } else { %>
+                                                <div class="col-9">
+                                                    <h5 class="card-title mb-1">Virgin ?</h5>
+                                                    <p class="card-text"><%= user.virgin %></p>
+                                                </div>
+                                            <% }%>
+                                        </div>
+                                        <% if (user.nickname.length>0) { %>
+                                            <div class="row mt-4">
+                                                <div class="col-9 mx-auto">
+                                                    <h5 class="card-title mb-1 mb-1">Nickname </h5>
+                                                    <p class="card-text"><%= user.nickname%></p>
+                                                </div>
+                                            </div>
+                                        <% } %>
+                                        <div class="row d-flex justify-content-between mt-4">
+                                            <div class="col-6">
+                                                <% if (user.income.length>0) { %>
+                                                    <h5 class="card-title mb-1">Has a Source of income ? </h5>
+                                                    <p class="card-text"><%= user.income%></p>
+                                                <% } else { %>
+                                                    <h5 class="card-title mb-1">Has a Source of income ? </h5>
+                                                    <p class="card-text">Not Specified</p>
+                                                <% } %>
+                                            </div>
+                                            <div class="col-6">
+                                                <% if (user.cook.length>0) { %>
+                                                    <% if (user.gender==="Male") { %>
+                                                        <h5 class="card-title mb-1">Does he cook ?</h5>
+                                                        <p class="card-text"><%= user.cook %></p>
+                                                    <% } else if (user.gender==="Female") { %>
+                                                        <h5 class="card-title mb-1">Does she cook ?</h5>
+                                                        <p class="card-text"><%= user.cook %></p>
+                                                    <% } else { %>
+                                                        <h5 class="card-title mb-1">Does the person cook ?</h5>
+                                                        <p class="card-text"><%= user.cook %></p>
+                                                    <% } %>
+                                                <% } else { %>
+                                                    <% if(user.gender==="Male") { %>
+                                                        <h5 class="card-title mb-1">Does he cook ?</h5>
+                                                        <p class="card-text">Not Specified</p>
+                                                    <% } else if (user.gender==="Female") { %>
+                                                        <h5 class="card-title mb-1">Does she cook ?</h5>
+                                                        <p class="card-text">Not Specified</p>
+                                                    <% } else { %>
+                                                        <h5 class="card-title mb-1">Does the person cook ?</h5>
+                                                        <p class="card-text">Not Specified</p>
+                                                    <% } %>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>  
+                    </div>
+
+                    <div class="col-12 col-lg-5 mr-auto">
+                        <div class="my-4 pb-3">
+                            <div class="card shadow bg-danger rounded pb-3 ">
+                                <div class="card-body col-12 px-4 py-0 px-md-0 mx-auto text-light ">
+                                <div class="card-header"><h3 class="title">Dating Preferences</h3></div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-9 mx-auto">
+                                                <h5 class="card-title mb-1">Looking for ?  </h5>
+                                                <% if (user.relType === "Anything will do") { %>
+                                                    <p class="card-text">Anything from :</p>
+                                                    <ul class="m-0">
+                                                        <li><p class="card-text">Short Term</p></li>
+                                                        <li><p class="card-text">Long Term</p></li>
+                                                        <li><p class="card-text">Hookups</p></li>
+                                                        <li><p class="card-text">Casual Flings</p></li>
+                                                        <li><p class="card-text">One Night Stands</p></li>
+                                                    </ul>
+                                                <% } else { %>
+                                                    <p class="card-text"><%= user.relType %></p>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-9 mx-auto">
+                                                <h5 class="card-title mb-1">Preferred Age Group </h5>
+                                                <p class="card-text">16-20</p>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12 mx-auto">
+                                                <h5 class="card-title mb-1">Short Distance or Long Distance ?</h5>
+                                                <p class="card-text"><%= user.relDistance %></p>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-12 mx-auto">
+                                                <h5 class="card-title mb-1">Up for Live In ?</h5>
+                                                <% if (user.liveIn == "--Not Specified--") { %>
+                                                    <p class="card-text">Not Specified</p>
+                                                <% } else { %>
+                                                    <p class="card-text"><%= user.liveIn %></p>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow bg-info rounded my-5 ">
+                            <div class="card-body col-12 px-4 py-0 px-md-0 mx-auto text-light ">
+                                <div class="card-header"><h3 class="title"><%= user.firstName %>'s Other Accounts</h3></div>
+                                    <div class="card-body">
+                                        <% if (user.fbLink.length>0) { %>
+                                        <div class="row d-flex justify-content-center my-3">
+                                            <div class="col-2 acc-icon"><i class="fab fa-facebook"></i></div>
+                                            <div class="col-5 "><a class="acc-link card-title" href="<%= user.fbLink %>">Facebook</a></div>
+                                        </div> 
+                                        <% } %>
+                                        <% if (user.igLink.length>0) { %>
+                                        <div class="row d-flex justify-content-center my-3">
+                                            <div class="col-2 acc-icon"><i class="fab fa-instagram"></i></div>
+                                            <div class="col-5 "><a class="acc-link card-title" href="<%= user.igLink %>">Instagram</a></div>
+                                        </div> 
+                                        <% } %>
+                                        <% if (user.twitterLink.length>0) { %>
+                                            <div class="row d-flex justify-content-center my-3">
+                                                <div class="col-2 acc-icon"><i class="fab fa-twitter"></i></div>
+                                                <div class="col-5 "><a class="acc-link card-title" href="<%= user.twitterLink %>">Twitter</a></div>
+                                            </div> 
+                                        <% } %>
+                                        <% if ( ((user.fbLink.length==0) && (user.igLink.length==0)) && (user.twitterLink.length==0)) { %>
+                                            <div class="row d-flex justify-content-center my-3">
+                                                <div class="col-7 "><div class="acc-link card-title" href="javascript:;">No Account Links Provided</div></div>
+                                            </div> 
+                                        <% } %>
+                                    </div>
+                                </div>
+                        </div> 
+                    </div>
+                </div>
+                <% if(currentUser && user._id.equals(currentUser._id)) {%>
+                    <div class="row d-flex justify-content-center pb-4">
+                        <a href="/profile/<%= user._id %>/edit" class="btn btn-lg btn-rose">Edit Profile</a>
+                    </div>
+                    <% } else { %>
+                        <div class="row d-flex justify-content-center pb-4">
+                            <div class="col-3">
+                                <% var item = user._id%>
+                                <% var index = currentUser.savedUsers.indexOf(item); %>
+                                <% if (index === -1) { %>
+                                    <form action="/saved/<%= user._id%>" method="post">
+                                        <button class="btn btn-lg btn-rose">SAVE &nbsp; <i class="fa fa-bookmark"></i></button>
+                                        <div>
+                                            <small> Note: Only you can see your saved Profiles</small>
+                                        </div>
+                                    </form>
+                                <% } else { %>
+                                    <form action="/removeFromSaved/<%= user._id%>" method="post">
+                                        <button class="btn btn-lg btn-rose">REMOVE FROM SAVED &nbsp; <i class="far fa-bookmark"></i></button>
+                                        <div>
+                                            <small> Note: Only you can see your saved Profiles</small>
+                                        </div>
+                                    </form>
+                                    <% } %>
+                            </div>
+                            <div class="col-3">
+                                <form action="/likes/<%= user._id %>" method="POST">
+                                    <input type="submit" class="btn btn-lg btn-rose" value="<%= button.value %>">
+                                </form>
+                            </div>
+                        </div>  
+                        <% } %>
+                        <div class="row d-flex justify-content-center pb-4">
+                        </div>               
+                    </div>
+                    <div class="tab-pane text-center gallery" id="photos">
+                        <div class="row w-75 mx-auto d-flex justify-content-center ">
+                            <% if (user.images.length==0) {%>
+                                <h2 class="title my-5">No Pictures Uploaded.</h2>
+                                <% } %>
+                                <% user.images.forEach(function (img) { %>
+                                    <div class="col-12 col-md-6">
+                                        <div class="card shadow-lg bg-white rounded mt-5">
+                                            <img class="card-img mb-0" style="width:100%; height: 100%; object-fit: cover;" src="<%= img.url %>">
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                        </div>
+                        <% if(currentUser && user._id.equals(currentUser._id)) {%>
+                        <div class="row d-flex justify-content-center pb-4">
+                            <a href="/profile/<%= user._id %>/edit#photos" class="btn btn-lg btn-rose">Edit Profile Pictures</a>
+                        </div>
+                        <% } else { %>
+                            <div class="row d-flex justify-content-center pb-4">
+                                <div class="col-3">
+                                    <% var item = user._id%>
+                                    <% var index = currentUser.savedUsers.indexOf(item); %>
+                                    <% if (index === -1) { %>
+                                        <form action="/saved/<%= user._id%>" method="post">
+                                            <button class="btn btn-lg btn-rose">SAVE &nbsp; <i class="fa fa-bookmark"></i></button>
+                                            <div>
+                                                <small> Note: Only you can see your saved Profiles</small>
+                                            </div>
+                                        </form>
+                                    <% } else { %>
+                                        <form action="/removeFromSaved/<%= user._id%>" method="post">
+                                            <button class="btn btn-lg btn-rose">REMOVE FROM SAVED &nbsp; <i class="far fa-bookmark"></i></button>
+                                            <div>
+                                                <small> Note: Only you can see your saved Profiles</small>
+                                            </div>
+                                        </form>
+                                        <% } %>
+                                </div>
+                                <div class="col-3">
+                                    <form action="/likes/<%= user._id %>" method="POST">
+                                        <input type="submit" class="btn btn-lg btn-rose" value="<%= button.value %>">
+                                    </form>
+                                </div>
+                            </div>  
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class = "footer ">
+        <div class="container-fluid footer-content">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <img class="mb-2"
+                        src="https://res.cloudinary.com/dcimcuqjm/image/upload/v1592807748/Screenshot_89_p19yzz.png" alt=""
+                        width="210" height="100" class="footer-content">
+                    <small class="d-block mb-3 text-muted footer-content">&copy; SetItUp 2020</small>
+                </div>
+                <div class=" col-6 col-md">
+                    <h5>CONDITIONS</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a href="#"class = "footer-content">Privacy</a></li>
+                        <li><a href="#" class = "footer-content">Terms</a></li>
+                        <li><a href="#"class = "footer-content">Community Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>FOLLOW</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a href="#" class = "footer-content">Instagram</a></li>
+                        <li><a href="#" class = "footer-content">Snapchat</a></li>
+                        <li><a href="#" class = "footer-content">Facebook</a></li>
+                        <li><a href="#" class = "footer-content">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>CONTACT</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a href="#" class = "footer-content">Support</a></li>
+                        <li><a href="#" class = "footer-content">Safety Tips</a></li>
+                        <li><a href="#" class = "footer-content">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+<script>
+    var big_image;
+
+$(document).ready(function() {
+  BrowserDetect.init();
+
+  // Init Material scripts for buttons ripples, inputs animations etc, more info on the next link https://github.com/FezVrasta/bootstrap-material-design#materialjs
+  $('body').bootstrapMaterialDesign();
+
+  window_width = $(window).width();
+
+  $navbar = $('.navbar[color-on-scroll]');
+  scroll_distance = $navbar.attr('color-on-scroll') || 500;
+
+  $navbar_collapse = $('.navbar').find('.navbar-collapse');
+
+  //  Activate the Tooltips
+  $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
+
+  // Activate Popovers
+  $('[data-toggle="popover"]').popover();
+
+  if ($('.navbar-color-on-scroll').length != 0) {
+    $(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
+  }
+
+  materialKit.checkScrollForTransparentNavbar();
+
+  if (window_width >= 768) {
+    big_image = $('.page-header[data-parallax="true"]');
+    if (big_image.length != 0) {
+      $(window).on('scroll', materialKit.checkScrollForParallax);
+    }
+
+  }
+
+
+});
+
+$(document).on('click', '.navbar-toggler', function() {
+  $toggle = $(this);
+
+  if (materialKit.misc.navbar_menu_visible == 1) {
+    $('html').removeClass('nav-open');
+    materialKit.misc.navbar_menu_visible = 0;
+    $('#bodyClick').remove();
+    setTimeout(function() {
+      $toggle.removeClass('toggled');
+    }, 550);
+
+    $('html').removeClass('nav-open-absolute');
+  } else {
+    setTimeout(function() {
+      $toggle.addClass('toggled');
+    }, 580);
+
+
+    div = '<div id="bodyClick"></div>';
+    $(div).appendTo("body").click(function() {
+      $('html').removeClass('nav-open');
+
+      if ($('nav').hasClass('navbar-absolute')) {
+        $('html').removeClass('nav-open-absolute');
+      }
+      materialKit.misc.navbar_menu_visible = 0;
+      $('#bodyClick').remove();
+      setTimeout(function() {
+        $toggle.removeClass('toggled');
+      }, 550);
+    });
+
+    if ($('nav').hasClass('navbar-absolute')) {
+      $('html').addClass('nav-open-absolute');
+    }
+
+    $('html').addClass('nav-open');
+    materialKit.misc.navbar_menu_visible = 1;
+  }
+});
+
+materialKit = {
+  misc: {
+    navbar_menu_visible: 0,
+    window_width: 0,
+    transparent: true,
+    fixedTop: false,
+    navbar_initialized: false,
+    isWindow: document.documentMode || /Edge/.test(navigator.userAgent)
+  },
+
+  initFormExtendedDatetimepickers: function() {
+    $('.datetimepicker').datetimepicker({
+      icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-chevron-up",
+        down: "fa fa-chevron-down",
+        previous: 'fa fa-chevron-left',
+        next: 'fa fa-chevron-right',
+        today: 'fa fa-screenshot',
+        clear: 'fa fa-trash',
+        close: 'fa fa-remove'
+      }
+    });
+  },
+
+  initSliders: function() {
+    // Sliders for demo purpose
+    var slider = document.getElementById('sliderRegular');
+
+    noUiSlider.create(slider, {
+      start: 40,
+      connect: [true, false],
+      range: {
+        min: 0,
+        max: 100
+      }
+    });
+
+    var slider2 = document.getElementById('sliderDouble');
+
+    noUiSlider.create(slider2, {
+      start: [20, 60],
+      connect: true,
+      range: {
+        min: 0,
+        max: 100
+      }
+    });
+  },
+
+  checkScrollForParallax: function() {
+    oVal = ($(window).scrollTop() / 3);
+    big_image.css({
+      'transform': 'translate3d(0,' + oVal + 'px,0)',
+      '-webkit-transform': 'translate3d(0,' + oVal + 'px,0)',
+      '-ms-transform': 'translate3d(0,' + oVal + 'px,0)',
+      '-o-transform': 'translate3d(0,' + oVal + 'px,0)'
+    });
+  },
+
+  checkScrollForTransparentNavbar: debounce(function() {
+    if ($(document).scrollTop() > scroll_distance) {
+      if (materialKit.misc.transparent) {
+        materialKit.misc.transparent = false;
+        $('.navbar-color-on-scroll').removeClass('navbar-transparent');
+      }
+    } else {
+      if (!materialKit.misc.transparent) {
+        materialKit.misc.transparent = true;
+        $('.navbar-color-on-scroll').addClass('navbar-transparent');
+      }
+    }
+  }, 17)
+};
+
+// Returns a function, that, as long as it continues to be invoked, will not
+// be triggered. The function will be called after it stops being called for
+// N milliseconds. If `immediate` is passed, trigger the function on the
+// leading edge, instead of the trailing.
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+    var context = this,
+      args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    }, wait);
+    if (immediate && !timeout) func.apply(context, args);
+  };
+};
+
+var BrowserDetect = {
+  init: function() {
+    this.browser = this.searchString(this.dataBrowser) || "Other";
+    this.version = this.searchVersion(navigator.userAgent) || this.searchVersion(navigator.appVersion) || "Unknown";
+  },
+  searchString: function(data) {
+    for (var i = 0; i < data.length; i++) {
+      var dataString = data[i].string;
+      this.versionSearchString = data[i].subString;
+
+      if (dataString.indexOf(data[i].subString) !== -1) {
+        return data[i].identity;
+      }
+    }
+  },
+  searchVersion: function(dataString) {
+    var index = dataString.indexOf(this.versionSearchString);
+    if (index === -1) {
+      return;
+    }
+
+    var rv = dataString.indexOf("rv:");
+    if (this.versionSearchString === "Trident" && rv !== -1) {
+      return parseFloat(dataString.substring(rv + 3));
+    } else {
+      return parseFloat(dataString.substring(index + this.versionSearchString.length + 1));
+    }
+  },
+
+  dataBrowser: [{
+      string: navigator.userAgent,
+      subString: "Chrome",
+      identity: "Chrome"
+    },
+    {
+      string: navigator.userAgent,
+      subString: "MSIE",
+      identity: "Explorer"
+    },
+    {
+      string: navigator.userAgent,
+      subString: "Trident",
+      identity: "Explorer"
+    },
+    {
+      string: navigator.userAgent,
+      subString: "Firefox",
+      identity: "Firefox"
+    },
+    {
+      string: navigator.userAgent,
+      subString: "Safari",
+      identity: "Safari"
+    },
+    {
+      string: navigator.userAgent,
+      subString: "Opera",
+      identity: "Opera"
+    }
+  ]
+
+};
+</script>
+</body>
+</html>

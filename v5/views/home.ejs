@@ -1,0 +1,17 @@
+<%- include("./partials/header") %>
+</head>
+<body>
+    <h1>Home page!!!</h1>
+
+    <%= currentUser.firstName %>
+
+    <p></p>
+
+    <img src = "<%= currentUser.image %>" width: 100>
+    <a href="/explore/<%= currentUser._id %>">Go to explore page</a>
+
+    <!-- <% data.forEach((user) => { %>
+        <%= user %>
+    <% }); %> -->
+
+<%- include("./partials/footer") %>

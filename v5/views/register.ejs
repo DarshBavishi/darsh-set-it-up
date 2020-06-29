@@ -1,0 +1,156 @@
+<%- include("./partials/header") %>
+<link rel="stylesheet" href="/stylesheets/register.css">
+
+<div class=" container-fluid">
+        <div class="register-pg card mx-auto my-5 border-dark col-12 col-sm-9 col-md-7 col-lg-6">
+            <div class = " register-pg jumbotron mb-0">
+                <div class="h1 text-lg text-center text-info m-0 p-0">
+                    Sign Up! &nbsp;<i class="fas fa-venus-mars"></i>
+                </div>
+            </div>
+            <div class="card-body text-dark">
+                <h3 class="card-title text-center mb-4 py-3 font-weight-bold">Enter the Following Details to Create an Account.</h3>
+                <div>
+                    <form onsubmit="return mySubmitFunction(event)" action="/register" method="POST"  enctype = "multipart/form-data" class="needs-validation" novalidate>
+                        <div class="form-group row">
+                                <span class="i-register col-1"><i class="fas  fa-user"></i></span>
+                                <div class="col-9 mx-auto">
+                                    <input required type="text" name="username" id="username" class="form-control" placeholder="Username" >
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-1 i-register "><i class="fas fa-at"></i></span>
+                            <div class="col-9 mx-auto ">
+                                <input required type="email" name="email" class="form-control" placeholder="Email" >
+                                <div class="invalid-feedback">
+                                Please provide a valid Email-id.
+                            </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-1 i-register "><i class="fas fa-key"></i> </span>
+                            <div class="col-9 mx-auto">
+                                <div class="input-group">
+                                    <input minlength="8" required id = "password" type="password" name="password" class="form-control pwd" placeholder="Password">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default reveal-pwd" type="button"><i class="fas fa-eye"></i></button>
+                                </span>
+                                </div>
+
+                                <div class="invalid-feedback">
+                                     Your Password should be minimum 8 characters long.
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-1 i-register "> <i class="fas fa-lock"></i> </span>
+                            <div class="col-9 mx-auto">
+                                <div class="input-group">
+                                     <input minlength="8" required id = "retypedpassword" type="password" name="retypedpassword" class="form-control repwd"placeholder="Retype Password" onChange="checkPasswordMatch();" >
+                                     <span class="input-group-btn">
+                                        <button class="btn btn-default reveal-repwd" type="button"><i class="fas fa-eye"></i></button>
+                                    </span>
+                                    <div>
+                                        <div class="registrationFormAlert" id="divCheckPasswordMatch">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin: 15px 0px;" class="hr-theme-slash-2">
+                            <div class="hr-line"></div>
+                            <div class="hr-icon"><i class="fas fa-venus-mars"></i></div>
+                            <div class="hr-line"></div>
+                         </div>
+
+                        <h3 class="card-title text-center mb-4 py-3 font-weight-bold">Add a Profile Picture.</h3>
+
+                        <div class="form-group d-flex justify-content-center">
+                            <label for="image">Image</label>
+                            <input required type="file" id="image" name="image" accept="image/*">
+                        </div>
+
+                        <div style="margin: 15px 0px;" class="hr-theme-slash-2">
+                            <div class="hr-line"></div>
+                            <div class="hr-icon"><i class="fas fa-venus-mars"></i></div>
+                            <div class="hr-line"></div>
+                        </div>
+                        <!-- --------------------------------------------------------- -->
+                        <!-- Added by Parth -->
+                        <div class="form-group row d-flex justify-content-center">
+                            <div class="col-1  i-register "> <i class="fas fa-mobile-alt"></i> </div>
+                            <div class="col-3 ">
+                                <div class="input-group">
+                                    <input readonly type="text" class="form-control-plaintext" value="<%= phNumber %>" name="phNumber">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ---------------------------------------------------------------- -->
+                        <div class="form-group row d-flex justify-content-between">
+                            <label class="col-2 col-form-label text-right">Age: </label>
+                            <div class="col-4 mx-auto">
+                                <div class="input-group">
+                                    <input readonly type="text" class="form-control-plaintext" value="<%= age %>" name="age">
+                                </div>
+                            </div>
+                            <span class="col-1 i-register "> <i id="button4" class="fas fa-birthday-cake"></i> </span>
+                            <div class="col-4 mx-auto">
+                                <div class="input-group">
+                                    <input readonly type="text" class="form-control-plaintext" value="<%= date %>" name="date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="mx-4">
+                                <div class="form-check pt-4">
+                                    <input required class="form-check-input" type="checkbox" id="gridCheck1">
+                                    By checking this, I agree to the terms and conditions and privacy policy of <strong>SetItUp</strong> and accept to abide by them at all times. Failure to do so can result in a temporary ban or permanent deletion of my account.
+                                    <div class="invalid-feedback">
+                                        You must agree before submitting.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>
+                            <button id="register" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+                                aria-expanded="false" aria-controls="collapseExample" disabled>
+                                Proceed to Enter OTP &nbsp; <i id="registerSymbol" class="fas fa-arrow-down"></i>
+                            </button>
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body col-md-10 col-lg-8 mx-auto text-dark border-0 ">
+                                <div class="form-row mt-0 mb-4 d-flex justify-content-around">
+                                    <div class="input-group myclass">
+                                        <!-- <div class="input-group-prepend col-sm-9 col-md-7 col-lg-6 mx-auto ml-5 my-4 pt-4 d-flex justify-content-between">
+                                            <span class=" input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                        </div> -->
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="addon-wrapping"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder=" Enter Verification code" aria-label="Username"
+                                            aria-describedby="basic-addon1" name="code" required>
+                                    </div>
+                                </div>
+                                <button style="width: 60%;" type="submit" class="btn btn-info btn-sm mx-auto " href="/profile">Proceed to Set Up your Profile &nbsp; <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="/scripts/form-validations.js"></script>
+</body>
+</html>

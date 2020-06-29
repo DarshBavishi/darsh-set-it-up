@@ -1,0 +1,96 @@
+<%- include("./partials/header") %>
+</head>
+<body>
+<style>
+.myId {
+    float: left;
+    width:  250px;
+    height: 250px;
+    object-fit: contain;
+    margin: auto;
+}
+</style>
+    <% if (user.savedUsers.length != 0 ) {%>
+        <div class="jumbotron">
+            <div class="h1 text-lg text-center text-info m-0 p-0"> Your Saved Profiles &nbsp;<i class="fas fa-venus-mars"></i>
+            </div>
+        </div>
+        <div class="container">
+            <% for ( var i=0; i<user.savedUsers.length; i++) { %> 
+                <% if (i%2 === 0 ) { %>
+                    <div class="card m-5 border px-auto py-4 pl-md-2 pr-md-5 shadow-lg  text-center text-md-left" >
+                    <div class="row no-gutters">
+                        <div class="col-md-4 d-flex justify-content-center">
+                        <img src="<%= user.savedUsers[i].image %>" class="card-img img-fluid myId" alt="...">
+                        </div>
+                        <div class="col-md-8 mx-auto mx-md-0">
+                            <div class="card-body mx-auto mx-md-0">
+                                <h4 class="card-title"><%= user.savedUsers[i].name %></h4>
+                                <div class="dropdown-divider"></div>
+                                <p class="card-text"><span class="lead"><%= user.savedUsers[i].age %> &#8226; <%= user.savedUsers[i].city %> &#8226; <%= user.savedUsers[i].maritalStatus %> &#8226; <%= user.savedUsers[i].relPreference %></span></p>
+                                <% if(user.savedUsers[i].bio.length <= 247) { %>
+                                    <p class="card-text"><%= user.savedUsers[i].bio %> </p>
+                                <% } else { %>
+                                    <p class="card-text"><%= user.savedUsers[i].bio.substring(0,247)%>...</p>
+                                <% } %>
+                                <div class="row d-flex py-4 justify-content-center justify-content-md-start">
+                                    <div class="col-6">
+                                        <form action="/removeFromSavedPage/<%= user.savedUsers[i]._id%>" method="post">
+                                            <button class="btn btn-outline-danger rounded-0">REMOVE FROM SAVED &nbsp; <i class="far fa-bookmark"></i></button>
+                                            <div>
+                                                <small> Note: Only you can see your saved Profiles</small>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="/profile/<%= user.savedUsers[i]._id %>/view" class="btn btn-outline-primary rounded-0">View Profile</a>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    </div>
+                <% } else { %>
+                    <div class="card m-5 border px-auto py-4 pr-md-2 pl-md-5 shadow-lg text-center text-md-left"  >
+                    <div class="row no-gutters">
+                        <div class="col-md-8 order-2 order-md-1 mx-auto mx-md-0 ">
+                            <div class="card-body mx-auto mx-md-0">
+                                <h4 class="card-title"><%= user.savedUsers[i].name %></h4>
+                                <div class="dropdown-divider"></div>
+                                <p class="card-text"><span class="lead"><%= user.savedUsers[i].age %> &#8226; <%= user.savedUsers[i].city %> &#8226; <%= user.savedUsers[i].maritalStatus %> &#8226; <%= user.savedUsers[i].relPreference %></span></p>
+                                <% if(user.savedUsers[i].bio.length <= 247) { %>
+                                    <p class="card-text"><%= user.savedUsers[i].bio %> </p>
+                                <% } else { %>
+                                    <p class="card-text"><%= user.savedUsers[i].bio.substring(0,247)%>...</p>
+                                <% } %>
+                                <div class="row d-flex py-4 justify-content-center justify-content-md-start">
+                                    <div class="col-6">
+                                        <form action="/removeFromSavedPage/<%= user.savedUsers[i]._id%>" method="post">
+                                            <button class="btn btn-outline-danger rounded-0">REMOVE FROM SAVED &nbsp; <i class="far fa-bookmark"></i></button>
+                                            <div>
+                                                <small> Note: Only you can see your saved Profiles</small>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="/profile/<%= user.savedUsers[i]._id %>/view" class="btn btn-outline-primary rounded-0">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 order-1 order-md-2 d-flex justify-content-center">
+                        <img src="<%= user.savedUsers[i].image %>" class="card-img img-fluid myId" alt="...">
+                        </div>
+                    </div>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    <% } else { %>
+        <div style="height: 300px;" class="jumbotron m-5 text-dark text-center">
+            <div class="">
+                <h1 class="mx-auto my-auto">No Saved Profiles!</h1>
+            </div>
+        </div>
+    <% } %>
+<%- include("./partials/footer") %>
