@@ -1,0 +1,13 @@
+<%- include("./partials/header") %>
+<title><%= currentUser.username %> | Home | Setitup</title>
+</head>
+<body>
+    <h1>Home page!!!</h1>
+
+    <%= currentUser.firstName %>
+
+    <p></p>
+
+    <img src = "<%= currentUser.image %>" width: 100>
+    <a href="/explore/<%= currentUser._id %>">Go to explore page</a>
+<%- include("./partials/footer") %>

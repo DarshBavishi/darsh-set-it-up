@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= currentUser.username %> | Home | Setitup </title>
+    <!-- botstrap/4.5 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- font awesme/5.12 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+    <!-- google fonts -->
+    <!-- pacifico-->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- balsamiqSans -->
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../public/stylesheets/home.css">
+    <link rel="stylesheet" href="../public/stylesheets/homeSharebutton.css">
+</head>
+<body>  
+
+  <nav id="font" class="navbar navbar-expand-lg navbar-dark" style="background-color: black; z-index: 1;">
+    <a class="navbar-brand" href="#">
+        <i class="fa fa-venus-mars biggy" aria-hidden="true"></i>
+        <span class="biggy">Setitup</span>
+    </a>
+
+    <!-- collapse button -->
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="navbar-toggler-icon"><span></span><span></span><span></span></div>
+    </button>
+    <!-- !collapse button -->
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <!-- <% if(currentUser) { %> -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fas fa-compass"></i>Discover <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fas fa-heart"></i>Likes <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fas fa-bookmark"></i>Saved <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><i class="fas fa-comment-alt"></i>Chat</a>
+            </li>
+        </ul>
+        <!-- right end -->
+        <ul class="navbar-nav ml-auto">
+            <!-- dropdown -->
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-user-circle biggy"></i><span class="drp">User</span>
+                </a>
+                <div id="drp" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#"><i class="far fa-user"></i>Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i
+                            class="fas fa-user-cog"></i>Settings</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><i class="fas fa-life-ring"></i>Help</a>
+                </div>
+            </li>
+            <!-- <% } else { %>
+            <a class="nav-link active" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+            <a class="nav-link active" href="/getting-started"><i class="fas fa-user-plus"></i>Signup</a>
+            <% } %> -->
+        </ul>
+    </div>
+</nav>
+<div class="container mt-5">
+    <!-- <% if(error && error.length > 0 ) { %> -->
+    <div class="row d-flex justify-content-between m-2">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="width: 100%;">
+            <%= error %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    <!-- <% } %> -->
+    <!-- <% if(success && success.length > 0 ) { %> -->
+    <!-- <div class="row d-flex justify-content-between m-2">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="width: 100%;">
+            <%= success %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    
+    <% } %> -->
+</div>
+<div class="jumbotron m-3 rounded-lg shadow-lg w-75 mx-auto">
+  <div class="container text-center ">
+    <div class="row">
+      <div class="col-lg-8 order-2 order-lg-1">
+          <h1 class="display-3">Welcome
+to </br> <span class="highlight-word">Setitup</span></h1>
+  <p class="lead mt-5">Your final stop to find a <strong style="font-weight: 600;">Perfect Match</strong> .We set you up according to your Preferences, be it for long term or just a night. We support every <strong style="font-weight: 600;">Community</strong> and truly believe everyone has the right to find their perfect someone. </p>
+  <div style="border-top: 1px solid #47494863;" class="dropdown-divider w-75 mx-auto"></div>    
+  <span class="text-left d-inline-block">
+    <p  class="text-dark lead my-3">Visit us on :
+      <a style="font-size: 2rem; color: #999999;" class="m-3" href="#" role="button"><i class="fab fa-instagram"></i></a>
+      <a style="font-size: 2rem; color: #999999;" class="m-3"href="#" role="button"><i class="fab fa-github"></i></a>
+      <a style="font-size: 2rem; color: #999999;" class="m-3"href="#" role="button"><i class="fab fa-facebook"></i></a>
+    </p>
+        </span>
+        
+        <div class="share-button mx-auto mt-3">
+          <span class="font-weight-bolder text-white"><i class="fas fa-share-alt mr-1"></i>  Share</span>
+          <a href="http://www.facebook.com/sharer.php?u=http://www.SetItUp.com" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/?text=joy"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://twitter.com/share?url=http://www.instagram.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.instagram.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>         
+      </div>
+      <div class="col-lg-4 order-1 order-lg-2 d-flex justify-content-center justify-content-lg-start align-items-lg-start p-0">
+        <img src="venus-mars-solid.svg" alt="" class="img-fluid siu-logo">
+      </div>
+    </div>
+
+ 
+    </div>
+</div>
+<div class="shadow-lg border mt-5">
+  <div class="container-fluid p-0 ">
+        <div id="myCarousel" class="carousel slide carousel-fade " data-interval="false">
+           <div class="card ">
+               <div class="col-12 col-lg-10 mx-auto">
+                   <div class="carousel-inner p-5 p-lg-3"> 
+                     <div class="carousel-item active">
+                       <div class="mask flex-center">
+                           <div class="row align-items-center d-flex justify-content-between">
+                               <div class="col-lg-5 col-12 order-2 order-lg-1 m-2 m-lg-4 text-center text-lg-left">
+                                   <h4 class="">Darsh Bavishi</h4>
+                                   <p>21 &#8226; Mumbai</p>
+                                   <div class="dropdown-divider m-4 m-lg-2"></div>
+                                   <div class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum, urna eget congue bibendum, lacus elit fringilla mauris, eu facilisis ligula neque ac lorem. Sed et libero nec felis mattis venenatis. Vivamus pharetra pulvinar cursus sed.</div>
+                                   <a class="my-4" href="#">VIEW PROFILE</a>
+                                   
+                               </div>
+                               <!-- <div class="col-6 order-md-2 order-1"><img src="https://i.imgur.com/NKvkfTT.png" class="mx-auto" alt="slide"></div> -->
+                               <div class="col-lg-5 col-7 order-1 order-lg-2 m-2 m-lg-4 mx-auto ">
+                                   <div class="img mt-3 d-flex justify-content-center">
+                                       <img class=" rounded-lg -lg "  style="object-fit: contain;height: 100%;" src="https://image.shutterstock.com/image-photo/collage-portraits-ethnically-diverse-mixed-260nw-725291137.jpg" alt="">
+                                   </div>
+                               </div>
+                           </div>
+       
+                       </div>
+                     </div>
+                     <div class="carousel-item">
+                       <div class="mask flex-center">
+                           <div class="row align-items-center d-flex justify-content-between">
+                               <div class="col-lg-5 col-12 order-2 order-lg-1 m-2 m-lg-4 text-center text-lg-left">
+                                   <h4 class="">Darsh Bavishi</h4>
+                                   <p>21 • Mumbai</p>
+                                   <div class="dropdown-divider m-4 m-lg-2"></div>
+                                   <div class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum, urna eget congue bibendum, lacus elit fringilla mauris, eu facilisis ligula neque ac lorem. Sed et libero nec felis mattis venenatis. Vivamus pharetra pulvinar cursus sed.</div>
+                                   <a class="my-4" href="#">VIEW PROFILE</a>
+                                   
+                               </div>
+                               <!-- <div class="col-6 order-md-2 order-1"><img src="https://i.imgur.com/NKvkfTT.png" class="mx-auto" alt="slide"></div> -->
+                               <div class="col-lg-5 col-7 order-1 order-lg-2 m-2 m-lg-4 mx-auto ">
+                                   <div class="img mt-3 d-flex justify-content-center">
+                                       <img class=" rounded-lg -lg "  style="object-fit: contain;height: 100%;" src="https://m.media-amazon.com/images/M/MV5BNzMzYmRiNGEtMDg5OC00OGZmLWFmNDktYzRlZTFkZmZiMjAzXkEyXkFqcGdeQXVyMTE2OTE2MzE1._V1_UY1200_CR93,0,630,1200_AL_.jpg" alt="">
+                                   </div>
+                               </div>
+                           </div>
+       
+                       </div>
+                     </div>
+                     <div class="carousel-item">
+                       <div class="mask flex-center">
+                           <div class="row align-items-center d-flex justify-content-between">
+                               <div class="col-lg-5 col-12 order-2 order-lg-1 m-2 m-lg-4 text-center text-lg-left">
+                                   <h4 class="">Darsh Bavishi</h4>
+                                   <p>21 • Mumbai</p>
+                                   <div class="dropdown-divider m-4 m-lg-2"></div>
+                                   <div class="text-white"> eget congue bibendum, lacus elit fringilla mauris, eu facilisis ligula neque ac lorem. Sed et libero nec felis mattis venenatis. Vivamus pharetra pulvinar cursus sed.</div>
+                                   <a class="my-4" href="#">VIEW PROFILE</a>
+                                   
+                               </div>
+                               <!-- <div class="col-6 order-md-2 order-1"><img src="https://i.imgur.com/NKvkfTT.png" class="mx-auto" alt="slide"></div> -->
+                               <div class="col-lg-5 col-7 order-1 order-lg-2 m-2 m-lg-4 mx-auto ">
+                                   <div class="img mt-3 d-flex justify-content-center">
+                                       <img class=" rounded-lg -lg " style="object-fit: contain;height: 100%;" src="https://pyxis.nymag.com/v1/imgs/ac1/e61/9fc82bbfde5bf369d9b9fc0a3e0af4ec27-normal-people-recaps-ep-01.rsquare.w1200.jpg" alt="">
+                                   </div>
+                               </div>
+                           </div>
+       
+                       </div>
+                     </div>
+                     
+                   </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev ml-3 ml-lg-5 rounded-circle" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> 
+            <a class="carousel-control-next mr-3 mr-lg-5 rounded-circle" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>                 
+       </div>   
+      </div>
+    </div>    
+      
+  <footer class = "footer">
+    <div class="container-fluid footer-content">
+        <div class="row">
+            <div class="col-12 col-md">
+                <img class="mb-2"
+                    src="https://res.cloudinary.com/dcimcuqjm/image/upload/v1592807748/Screenshot_89_p19yzz.png" alt=""
+                    width="210" height="100" class="footer-content">
+                <small class="d-block mb-3 text-muted footer-content">&copy; SetItUp 2020</small>
+            </div>
+            <div class=" col-6 col-md">
+                <h5>CONDITIONS</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="#"class = "footer-content">Privacy</a></li>
+                    <li><a href="#" class = "footer-content">Terms</a></li>
+                    <li><a href="#"class = "footer-content">Community Guidelines</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>FOLLOW</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="#" class = "footer-content">Instagram</a></li>
+                    <li><a href="#" class = "footer-content">Snapchat</a></li>
+                    <li><a href="#" class = "footer-content">Facebook</a></li>
+                    <li><a href="#" class = "footer-content">Twitter</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>CONTACT</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a href="#" class = "footer-content">Support</a></li>
+                    <li><a href="#" class = "footer-content">Safety Tips</a></li>
+                    <li><a href="#" class = "footer-content">Security</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+  </body>

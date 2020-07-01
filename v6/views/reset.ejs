@@ -1,0 +1,33 @@
+<%- include("./partials/header") %>
+<title>Reset Password | Setitup </title>
+
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+</head>
+<body>
+	<div id = "main-div" class="card text-center">
+		<div id = "card" class="card-body">
+			<form action = "/forgot" method = "POST">
+				<h1 id = "signIn" class="card-title">Reset Password</h1>
+				<hr>
+				<p class="card-text">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend" style = "margin-bottom: 15px;">
+							<span class="input-group-text" id="basic-addon1"><i class="fas fa-key" style ="font-size: 24px;"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="New Password" aria-label="Username" aria-describedby="basic-addon1" name = "email" required>
+					</div>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend" style = "margin-bottom: 15px;">
+							<span class="input-group-text" id="basic-addon1"><i class="fas fa-key" style ="font-size: 24px;"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="Retype Password" aria-label="Username" aria-describedby="basic-addon1" name = "email" required>
+					</div>
+					<div id ="reset" class="form-group">
+						<input type="submit" class="btn btn-primary" value="Reset Password">
+					</div>
+				</p>
+			</form>
+		</div>
+	</div>
+	
+<%- include("./partials/footer") %>
