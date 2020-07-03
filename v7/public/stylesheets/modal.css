@@ -1,0 +1,27 @@
+.heading
+{
+    text-align: center;
+    margin-left: 3%;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.modal-content
+{
+
+    background-color: #fc0349;
+   }
+
+
+i
+{
+    margin-top: 2%;
+    margin-left: 3%;
+    font-size: 40px;
+}
+
+#joy
+{
+    font-size: 25px;
+    font-weight: 300px;
+}
